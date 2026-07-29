@@ -11,8 +11,8 @@ android {
         applicationId = "org.zxcslauri.brightnessfix"
         minSdk = 27
         targetSdk = 34
-        versionCode = 1
-        versionName = "0.1-beta"
+        versionCode = 3
+        versionName = "0.3-beta"
     }
 
     buildTypes {

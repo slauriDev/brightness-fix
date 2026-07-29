@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Brightness Fix</string>
+    
+    <!-- Нижняя навигация -->
+    <string name="nav_home">Главная</string>
+    <string name="nav_help">Справка</string>
+    <string name="nav_settings">Настройки</string>
+    
+    <!-- Главная -->
+    <string name="brightness_label">Яркость</string>
+    <string name="fix_brightness">Фиксировать яркость</string>
+    <string name="range_255">1–255</string>
+    <string name="range_4095">1–4095</string>
+    <string name="range_title">Диапазон яркости</string>
+    
+    <!-- Справка -->
+    <string name="help_title">Справка</string>
+    <string name="help_text">Это приложение исправляет проблему с яркостью на GSI-прошивках для Infinix Hot 20i и подобных устройств.\n\nТребуется root-доступ (Magisk/KernelSU).\n\nСистемный ползунок использует значения 0–255, но контроллер дисплея ожидает 0–4095. Приложение записывает правильное значение напрямую в железо.\n\nGitHub: …\nTelegram: …</string>
+    
+    <!-- Настройки -->
+    <string name="settings_title">Настройки</string>
+    <string name="language_title">Язык</string>
+    <string name="language_english">English</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_coming_soon">Другие языки будут позже</string>
+    <string name="no_root">Нет root</string>
+    <string name="root_unavailable">Root недоступен</string>
+    <string name="error">Ошибка</string>
+    <string name="no_root_title">Нет root-доступа</string>
+    <string name="no_root_message">Для работы приложения требуется root.\nПредоставьте права в Magisk/KernelSU.</string>
+</resources>
