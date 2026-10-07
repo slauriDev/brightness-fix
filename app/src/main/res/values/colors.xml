@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="theme_primary">#FFD0BCFF</color>
-    <color name="theme_on_primary">#FF381E72</color>
-    <color name="theme_primary_container">#FF4F378B</color>
-    <color name="theme_on_primary_container">#FFEADDFF</color>
+
+    <color name="theme_background">#FF000000</color>
+    <color name="theme_surface">#FF1A1A1E</color>
+    <color name="theme_surface_alt">#FF1C1B1F</color>
+    
+    <color name="theme_text">#FFFFFFFF</color>
+    <color name="theme_text_secondary">#B3FFFFFF</color>
+    
+    <color name="theme_accent">#FFD0BCFF</color>
+    <color name="theme_accent_text">#FF381E72</color>
+    
+    <color name="theme_divider">#33FFFFFF</color>
+    <color name="theme_dim">#C3121212</color>
+    <color name="theme_dialog_bg">#FF2C2C2E</color>
+    
+
 </resources>

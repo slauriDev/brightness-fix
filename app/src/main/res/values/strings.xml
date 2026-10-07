@@ -46,4 +46,6 @@
     <string name="logs_empty">No logs yet</string>
     <string name="logs_clear">Clear</string>
     <string name="logs_cleared">Logs cleared</string>
+    <string name="logs_share">Share</string>
+    
 </resources>

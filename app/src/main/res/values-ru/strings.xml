@@ -46,4 +46,6 @@
     <string name="logs_empty">Логов пока нет</string>
     <string name="logs_clear">Очистить</string>
     <string name="logs_cleared">Логи очищены</string>
+    <string name="logs_share">Поделиться</string>
+
 </resources>

@@ -14,7 +14,8 @@
 
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -24,7 +25,8 @@
         <activity
             android:name=".LogsActivity"
             android:exported="false"
-            android:theme="@style/Theme.BrightnessFix" />
+            android:theme="@style/Theme.BrightnessFix"
+            android:screenOrientation="portrait" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

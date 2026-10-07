@@ -1,7 +1,7 @@
 package org.zxcslauri.brightnessfix
 
-import android.graphics.Color
 import android.os.Bundle
+import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -19,8 +19,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         val prefs = getSharedPreferences("app_prefs", MODE_PRIVATE)
 
-        val theme = prefs.getString("theme", "amoled")
-        applyTheme(theme)
+        val colors = ThemeManager.getColors(this)
 
         val lang = prefs.getString("language", "system")
         if (lang != null && lang != "system") {
@@ -32,9 +31,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (theme == "amoled") {
-            window.decorView.rootView.setBackgroundColor(Color.BLACK)
-        }
+        window.decorView.setBackgroundColor(colors.background)
+        findViewById<TextView>(R.id.tvTitle).setBackgroundColor(colors.surface)
+        findViewById<TextView>(R.id.tvTitle).setTextColor(colors.text)
+        findViewById<View>(R.id.bottomNav).setBackgroundColor(colors.surfaceAlt)
 
         tvTitle = findViewById(R.id.tvTitle)
 
