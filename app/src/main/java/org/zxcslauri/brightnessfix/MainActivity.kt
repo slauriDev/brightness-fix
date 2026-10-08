@@ -67,16 +67,4 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.fragmentContainer, fragment)
             .commit()
     }
-
-    companion object {
-        fun applyTheme(theme: String?) {
-            when (theme) {
-                "light" -> {
-                    AppCompatDelegate.setDefaultNightMode(
-                        AppCompatDelegate.MODE_NIGHT_NO
-                    )
-                }
-            }
-        }
-    }
 }

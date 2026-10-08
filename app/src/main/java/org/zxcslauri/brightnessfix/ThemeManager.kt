@@ -59,7 +59,7 @@ object ThemeManager {
                 accent = 0xFF4F378B.toInt(),
                 accentText = Color.WHITE,
                 divider = 0x66000000,
-                dim = 0x99000000,
+                dim = 0x99000000.toInt(),
                 dialogBackground = 0xFFE4E4E4.toInt()
             )
 
