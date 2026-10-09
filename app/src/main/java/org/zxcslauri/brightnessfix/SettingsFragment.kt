@@ -70,23 +70,38 @@ class SettingsFragment : Fragment() {
     }
 
     private fun applyTheme(view: View) {
-        val prefs = requireActivity().getSharedPreferences("app_prefs", 0)
-        val theme = prefs.getString("theme", "amoled")
-        val contrast = prefs.getString("contrast", "medium")
+        val colors = ThemeManager.getColors(requireContext())
 
-        val bgColor = when (theme) {
-            "light" -> 0xFFFFFFFF.toInt()
-            "amoled" -> 0xFF000000.toInt()
-            else -> 0xFF1C1B1F.toInt()
-        }
-        val alpha = when (contrast) {
-            "normal" -> 0.75f
-            "high" -> 1.0f
-            else -> 0.88f
+        view.setBackgroundColor(colors.background)
+
+        fun applyColors(currentView: View) {
+            when (currentView) {
+                is TextView -> {
+                    currentView.setTextColor(
+                        if (currentView.id == R.id.tvLanguageValue ||
+                            currentView.id == R.id.tvContrastValue ||
+                            currentView.id == R.id.tvThemeValue
+                        ) {
+                            colors.textSecondary
+                        } else {
+                            colors.text
+                        }
+                    )
+                }
+
+                is LinearLayout -> {
+                    currentView.setBackgroundColor(colors.surface)
+                }
+            }
+
+            if (currentView is ViewGroup) {
+                for (i in 0 until currentView.childCount) {
+                    applyColors(currentView.getChildAt(i))
+                }
+            }
         }
 
-        view.setBackgroundColor(bgColor)
-        view.alpha = alpha
+        applyColors(view)
     }
 
     private fun showLanguageDialog(currentLang: String?, tv: TextView, prefs: android.content.SharedPreferences) {

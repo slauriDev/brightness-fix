@@ -153,38 +153,35 @@ class HomeFragment : Fragment() {
     }
 
     private fun applyTheme(view: View) {
-        val prefs = requireActivity()
-            .getSharedPreferences("app_prefs", 0)
+        val colors = ThemeManager.getColors(requireContext())
 
-        val theme = prefs.getString("theme", "amoled")
-        val contrast = prefs.getString("contrast", "medium")
+        view.setBackgroundColor(colors.background)
 
-        val bgColor = when (theme) {
-            "light" -> 0xFFFFFFFF.toInt()
-            "amoled" -> 0xFF000000.toInt()
-            else -> 0xFF1C1B1F.toInt()
+        fun applyColors(currentView: View) {
+            when (currentView) {
+                is TextView -> {
+                    currentView.setTextColor(
+                        if (currentView.id == R.id.tvValue) {
+                            colors.text
+                        } else {
+                            colors.textSecondary
+                        }
+                    )
+                }
+
+                is LinearLayout -> {
+                    currentView.setBackgroundColor(colors.surface)
+                }
+            }
+
+            if (currentView is ViewGroup) {
+                for (i in 0 until currentView.childCount) {
+                    applyColors(currentView.getChildAt(i))
+                }
+            }
         }
 
-        val textColor = when (theme) {
-            "light" -> 0xFF000000.toInt()
-            else -> 0xFFFFFFFF.toInt()
-        }
-
-        val textSecondary = when (theme) {
-            "light" -> 0xFF444444.toInt()
-            else -> 0xB3FFFFFF.toInt()
-        }
-
-        val alpha = when (contrast) {
-            "normal" -> 0.75f
-            "high" -> 1.0f
-            else -> 0.88f
-        }
-
-        view.setBackgroundColor(bgColor)
-        view.alpha = alpha
-
-        updateTextColors(view, textColor, textSecondary)
+        applyColors(view)
     }
 
     private fun updateTextColors(
