@@ -1,4 +1,4 @@
-package org.zxcslauri.brightnessfix
+package org.slauridev.brightnessfix
 
 import android.content.Intent
 import android.os.Bundle
@@ -170,7 +170,7 @@ class HomeFragment : Fragment() {
                 }
 
                 is LinearLayout -> {
-                    currentView.setBackgroundColor(colors.surface)
+                    currentView.setBackgroundColor(colors.background)
                 }
             }
 

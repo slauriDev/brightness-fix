@@ -1,4 +1,4 @@
-package org.zxcslauri.brightnessfix
+package org.slauridev.brightnessfix
 
 import android.content.Context
 import android.util.Log

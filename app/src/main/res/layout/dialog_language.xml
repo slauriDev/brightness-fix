@@ -13,7 +13,7 @@
         android:text="@string/language_title"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@color/theme_text"
+        android:textColor="?android:textColorPrimary"
         android:layout_marginBottom="20dp" />
 
     <RadioGroup
@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/language_english"
-            android:textColor="@color/theme_text"
+            android:textColor="?android:textColorPrimary"
             android:textSize="16sp"
             android:paddingVertical="12dp"
             android:minHeight="48dp" />
@@ -37,35 +37,51 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/language_russian"
-            android:textColor="@color/theme_text"
+            android:textColor="?android:textColorPrimary"
             android:textSize="16sp"
             android:paddingVertical="12dp"
             android:minHeight="48dp" />
 
     </RadioGroup>
 
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="end"
-        android:layout_marginTop="24dp">
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:weightSum="2">
 
         <Button
             android:id="@+id/btnCancel"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="6dp"
             android:text="@android:string/cancel"
-            android:textColor="@color/theme_text"
-            android:backgroundTint="@android:color/transparent"
-            android:layout_marginEnd="12dp" />
+            android:textAllCaps="false"
+            android:textColor="?attr/themeTextPrimary"
+            android:background="@drawable/dialog_button_bg"
+            android:backgroundTint="@null"
+            android:minWidth="0dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp" />
 
         <Button
             android:id="@+id/btnApply"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_marginStart="6dp"
             android:text="@android:string/ok"
-            android:textColor="@color/theme_surface_alt" />
+            android:textAllCaps="false"
+            android:textColor="?attr/themeTextPrimary"
+            android:background="@drawable/dialog_button_bg"
+            android:backgroundTint="@null"
+            android:minWidth="0dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp" />
 
     </LinearLayout>
 

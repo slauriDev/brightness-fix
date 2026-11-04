@@ -1,19 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="theme_background">#FF000000</color>
-    <color name="theme_surface">#FF1A1A1E</color>
-    <color name="theme_surface_alt">#FF1C1B1F</color>
-    
-    <color name="theme_text">#FFFFFFFF</color>
-    <color name="theme_text_secondary">#B3FFFFFF</color>
-    
-    <color name="theme_accent">#FFD0BCFF</color>
-    <color name="theme_accent_text">#FF381E72</color>
-    
-    <color name="theme_divider">#33FFFFFF</color>
-    <color name="theme_dim">#C3121212</color>
-    <color name="theme_dialog_bg">#FF2C2C2E</color>
-    
+    <!-- LIGHT THEME -->
+    <color name="light_primary">#FF353BA7</color>
+    <color name="light_primary_dark">#FF2D4286</color>
+    <color name="light_accent">#FFFFD7A9</color>
+    <color name="light_background">#FFF8F9FE</color>
+    <color name="light_surface">#FFE1E7F6</color>
+    <color name="light_surface_alt">#FFD5DEF0</color>
+    <color name="light_text">#FF2D4286</color>
+    <color name="light_text_secondary">#FF698AE8</color>
+    <color name="light_divider">#FFC7D2E8</color>
+    <color name="light_dim">#66000000</color>
+    <color name="light_dialog_bg">#FFE1E7F6</color>
+    <color name="light_accent_text">#FF2D4286</color>
+    <color name="light_card_stroke">#FFC7D2E8</color>
+
+    <!-- DARK THEME -->
+    <color name="dark_primary">#FF698CE2</color>
+    <color name="dark_primary_dark">#FF1A2048</color>
+    <color name="dark_accent">#FF7661CC</color>
+    <color name="dark_background">#FF252A55</color>
+    <color name="dark_surface">#FF30354C</color>
+    <color name="dark_surface_alt">#FF393F5C</color>
+    <color name="dark_text">#FFF8F9FE</color>
+    <color name="dark_text_secondary">#FFC6D0E6</color>
+    <color name="dark_divider">#FF414866</color>
+    <color name="dark_dim">#99000000</color>
+    <color name="dark_dialog_bg">#FF30354C</color>
+    <color name="dark_accent_text">#FFFFFFFF</color>
+    <color name="dark_card_stroke">#FF454B68</color>
+
+    <!-- AMOLED THEME -->
+    <color name="amoled_primary">#FF698CE2</color>
+    <color name="amoled_primary_dark">#FF303B70</color>
+    <color name="amoled_accent">#FF7661CC</color>
+    <color name="amoled_background">#FF000000</color>
+    <color name="amoled_surface">#FF000000</color>
+    <color name="amoled_surface_alt">#FF1C234F</color>
+    <color name="amoled_text">#FFE8EAF6</color>
+    <color name="amoled_text_secondary">#FF789DB8</color>
+    <color name="amoled_divider">#FF252B55</color>
+    <color name="amoled_dim">#CC000000</color>
+    <color name="amoled_dialog_bg">#FF14193F</color>
+    <color name="amoled_accent_text">#FFFFFFFF</color>
+    <color name="amoled_card_stroke">#FF303B70</color>
 
 </resources>

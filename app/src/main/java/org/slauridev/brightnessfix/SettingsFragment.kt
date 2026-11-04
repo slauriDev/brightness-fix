@@ -1,6 +1,7 @@
-package org.zxcslauri.brightnessfix
+package org.slauridev.brightnessfix
 
 import android.app.Dialog
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -40,17 +41,6 @@ class SettingsFragment : Fragment() {
         }
         cardLanguage.setOnClickListener { showLanguageDialog(lang, tvLanguage, prefs) }
 
-        // Контрастность
-        val cardContrast = view.findViewById<LinearLayout>(R.id.cardContrast)
-        val tvContrast = view.findViewById<TextView>(R.id.tvContrastValue)
-        val contrast = prefs.getString("contrast", "medium")
-        tvContrast.text = when (contrast) {
-            "normal" -> getString(R.string.contrast_normal)
-            "high" -> getString(R.string.contrast_high)
-            else -> getString(R.string.contrast_medium)
-        }
-        cardContrast.setOnClickListener { showContrastDialog(contrast, tvContrast, prefs) }
-
         // Тема
         val cardTheme = view.findViewById<LinearLayout>(R.id.cardTheme)
         val tvTheme = view.findViewById<TextView>(R.id.tvThemeValue)
@@ -74,34 +64,28 @@ class SettingsFragment : Fragment() {
 
         view.setBackgroundColor(colors.background)
 
-        fun applyColors(currentView: View) {
-            when (currentView) {
-                is TextView -> {
-                    currentView.setTextColor(
-                        if (currentView.id == R.id.tvLanguageValue ||
-                            currentView.id == R.id.tvContrastValue ||
-                            currentView.id == R.id.tvThemeValue
-                        ) {
-                            colors.textSecondary
-                        } else {
-                            colors.text
-                        }
-                    )
-                }
+        fun applyTextColors(currentView: View) {
+            if (currentView is TextView) {
+                when (currentView.id) {
+                    R.id.tvLanguageValue,
+                    R.id.tvThemeValue -> {
+                        currentView.setTextColor(colors.textSecondary)
+                    }
 
-                is LinearLayout -> {
-                    currentView.setBackgroundColor(colors.surface)
+                    else -> {
+                        currentView.setTextColor(colors.text)
+                    }
                 }
             }
 
             if (currentView is ViewGroup) {
                 for (i in 0 until currentView.childCount) {
-                    applyColors(currentView.getChildAt(i))
+                    applyTextColors(currentView.getChildAt(i))
                 }
             }
         }
 
-        applyColors(view)
+        applyTextColors(view)
     }
 
     private fun showLanguageDialog(currentLang: String?, tv: TextView, prefs: android.content.SharedPreferences) {
@@ -124,50 +108,6 @@ class SettingsFragment : Fragment() {
                 "en" -> getString(R.string.language_english)
                 "ru" -> getString(R.string.language_russian)
                 else -> getString(R.string.language_english)
-            }
-            requireActivity().recreate()
-            dialog.dismiss()
-        }
-        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-        dialog.show()
-    }
-
-    private fun showContrastDialog(current: String?, tv: TextView, prefs: android.content.SharedPreferences) {
-        val dialog = Dialog(requireContext())
-        val view = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_radio, null)
-        dialog.setContentView(view)
-
-        val title = view.findViewById<TextView>(R.id.dialogTitle)
-        title.text = getString(R.string.contrast_title)
-
-        val radioGroup = view.findViewById<RadioGroup>(R.id.radioGroup)
-        val radioNormal = view.findViewById<RadioButton>(R.id.radio1)
-        val radioMedium = view.findViewById<RadioButton>(R.id.radio2)
-        val radioHigh = view.findViewById<RadioButton>(R.id.radio3)
-
-        radioNormal.text = getString(R.string.contrast_normal)
-        radioMedium.text = getString(R.string.contrast_medium)
-        radioHigh.text = getString(R.string.contrast_high)
-        radioHigh.visibility = View.VISIBLE
-
-        when (current) {
-            "normal" -> radioNormal.isChecked = true
-            "high" -> radioHigh.isChecked = true
-            else -> radioMedium.isChecked = true
-        }
-
-        view.findViewById<Button>(R.id.btnCancel).setOnClickListener { dialog.dismiss() }
-        view.findViewById<Button>(R.id.btnApply).setOnClickListener {
-            val value = when (radioGroup.checkedRadioButtonId) {
-                R.id.radio1 -> "normal"
-                R.id.radio3 -> "high"
-                else -> "medium"
-            }
-            prefs.edit().putString("contrast", value).apply()
-            tv.text = when (value) {
-                "normal" -> getString(R.string.contrast_normal)
-                "high" -> getString(R.string.contrast_high)
-                else -> getString(R.string.contrast_medium)
             }
             requireActivity().recreate()
             dialog.dismiss()

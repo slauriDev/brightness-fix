@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Brightness Fix</string>
     
+    <string name="settings">Settings</string>
+    
     <!-- Нижняя навигация -->
     <string name="nav_home">Home</string>
-    <string name="nav_help">Help</string>
-    <string name="nav_settings">Settings</string>
     
     <!-- Главная -->
     <string name="brightness_label">Brightness</string>
@@ -12,10 +12,6 @@
     <string name="range_255">1–255</string>
     <string name="range_4095">1–4095</string>
     <string name="range_title">Brightness range</string>
-    
-    <!-- Справка -->
-    <string name="help_title">Help</string>
-    <string name="help_text">This app fixes the brightness issue on GSI ROMs for Infinix Hot 20i and similar devices.\n\nRequires root access (Magisk/KernelSU).\n\nThe system slider uses values 0–255, but the display controller expects 0–4095. This app writes the correct value directly to the hardware.\n\nGitHub: …\nTelegram: …</string>
     
     <!-- Настройки -->
     <string name="settings_title">Settings</string>
@@ -28,12 +24,6 @@
     <string name="error">Error</string>
     <string name="no_root_title">No root acces</string>
     <string name="no_root_message">The app requires root access.\nGrant permissions in Magisk/KernelSU.</string>
-
-    <!-- Контрастность -->
-    <string name="contrast_title">Contrast</string>
-    <string name="contrast_normal">Normal</string>
-    <string name="contrast_medium">Medium</string>
-    <string name="contrast_high">High</string>
 
     <!-- Тема -->
     <string name="theme_title">Theme</string>

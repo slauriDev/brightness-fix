@@ -1,5 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.BrightnessFix" parent="Theme.AppCompat.NoActionBar">
+
+    <style name="Theme.BrightnessFix.Light"
+        parent="Theme.AppCompat.Light">
+
+        <item name="colorPrimary">@color/light_primary</item>
+        <item name="colorPrimaryDark">@color/light_primary_dark</item>
+        <item name="colorAccent">@color/light_accent</item>
+
+        <item name="android:colorBackground">@color/light_background</item>
+        <item name="android:windowBackground">@color/light_background</item>
+        <item name="android:statusBarColor">@color/light_background</item>
+        <item name="android:navigationBarColor">@color/light_background</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+
+        <item name="themeSurface">@color/light_surface</item>
+        <item name="themeSurfaceAlt">@color/light_surface_alt</item>
+        <item name="themeTextPrimary">@color/light_text</item>
+        <item name="themeTextSecondary">@color/light_text_secondary</item>
+        <item name="themeDivider">@color/light_divider</item>
+        <item name="themeDialogBackground">@color/light_dialog_bg</item>
+        <item name="themeDim">@color/light_dim</item>
+        <item name="themeAccentText">@color/light_accent_text</item>
+
+        <item name="actionBarStyle">@style/Widget.BrightnessFix.Light.ActionBar</item>
+        <item name="themeBackground">@color/light_background</item>
     </style>
+
+    <style name="TextAppearance.BrightnessFix.Light.ActionBar.Title"
+        parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+
+        <item name="android:textColor">#FF222222</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+
+    <style name="Widget.BrightnessFix.Light.ActionBar"
+        parent="Widget.AppCompat.Light.ActionBar">
+
+        <item name="background">@android:color/white</item>
+        <item name="titleTextStyle">@style/TextAppearance.BrightnessFix.Light.ActionBar.Title</item>
+        <item name="elevation">4dp</item>
+
+    </style>
+
+    <style name="Theme.BrightnessFix.Dark"
+        parent="Theme.AppCompat">
+
+        <item name="colorPrimary">@color/dark_primary</item>
+        <item name="colorPrimaryDark">@color/dark_primary_dark</item>
+        <item name="colorAccent">@color/dark_accent</item>
+
+        <item name="android:colorBackground">@color/dark_background</item>
+        <item name="android:windowBackground">@color/dark_background</item>
+        <item name="android:statusBarColor">@color/dark_background</item>
+        <item name="android:navigationBarColor">@color/dark_background</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+
+        <item name="themeSurface">@color/dark_surface</item>
+        <item name="themeSurfaceAlt">@color/dark_surface_alt</item>
+        <item name="themeTextPrimary">@color/dark_text</item>
+        <item name="themeTextSecondary">@color/dark_text_secondary</item>
+        <item name="themeDivider">@color/dark_divider</item>
+        <item name="themeDialogBackground">@color/dark_dialog_bg</item>
+        <item name="themeDim">@color/dark_dim</item>
+        <item name="themeAccentText">@color/dark_accent_text</item>
+
+        <item name="actionBarStyle">@style/Widget.BrightnessFix.Dark.ActionBar</item>
+        <item name="themeBackground">@color/dark_background</item>
+    </style>
+
+    <style name="TextAppearance.BrightnessFix.Dark.ActionBar.Title"
+        parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+
+        <item name="android:textColor">#FF000000</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+
+    <style name="Widget.BrightnessFix.Dark.ActionBar"
+        parent="Widget.AppCompat.ActionBar">
+
+        <item name="background">@color/dark_background</item>
+        <item name="actionBarStyle">@style/Widget.BrightnessFix.Dark.ActionBar</item>
+        <item name="elevation">4dp</item>
+
+    </style>
+
+    <style name="Theme.BrightnessFix.AMOLED"
+        parent="Theme.AppCompat">
+
+        <item name="colorPrimary">@color/amoled_primary</item>
+        <item name="colorPrimaryDark">@color/amoled_primary_dark</item>
+        <item name="colorAccent">@color/amoled_accent</item>
+
+        <item name="android:colorBackground">@color/amoled_background</item>
+        <item name="android:windowBackground">@color/amoled_background</item>
+        <item name="android:statusBarColor">@color/amoled_background</item>
+        <item name="android:navigationBarColor">@color/amoled_background</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+
+        <item name="themeSurface">@color/amoled_surface</item>
+        <item name="themeSurfaceAlt">@color/amoled_surface_alt</item>
+        <item name="themeTextPrimary">@color/amoled_text</item>
+        <item name="themeTextSecondary">@color/amoled_text_secondary</item>
+        <item name="themeDivider">@color/amoled_divider</item>
+        <item name="themeDialogBackground">@color/amoled_dialog_bg</item>
+        <item name="themeDim">@color/amoled_dim</item>
+        <item name="themeAccentText">@color/amoled_accent_text</item>
+
+        <item name="actionBarStyle">@style/Widget.BrightnessFix.Amoled.ActionBar</item>
+        <item name="themeBackground">@color/amoled_background</item>
+    </style>
+
+    <style name="TextAppearance.BrightnessFix.AMOLED.ActionBar.Title"
+        parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+
+        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+
+    <style name="Widget.BrightnessFix.Amoled.ActionBar"
+        parent="Widget.AppCompat.ActionBar">
+
+        <item name="background">@android:color/black</item>
+        <item name="titleTextStyle">@style/TextAppearance.BrightnessFix.AMOLED.ActionBar.Title</item>
+        <item name="elevation">4dp</item>
+
+    </style>
+    
 </resources>

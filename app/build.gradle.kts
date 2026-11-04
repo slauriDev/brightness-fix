@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "org.zxcslauri.brightnessfix"
+    namespace = "org.slauridev.brightnessfix"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "org.zxcslauri.brightnessfix"
+        applicationId = "org.slauridev.brightnessfix"
         minSdk = 27
         targetSdk = 34
         versionCode = 4

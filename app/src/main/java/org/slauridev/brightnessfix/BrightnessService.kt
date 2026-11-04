@@ -1,4 +1,4 @@
-package org.zxcslauri.brightnessfix
+package org.slauridev.brightnessfix
 
 import android.app.NotificationChannel
 import android.app.NotificationManager

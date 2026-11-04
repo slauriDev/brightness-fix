@@ -15,7 +15,7 @@
             android:text="@string/settings_title"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="@color/theme_text"
+            android:textColor="?attr/themeTextPrimary"
             android:layout_marginStart="8dp"
             android:layout_marginBottom="24dp" />
 
@@ -55,7 +55,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/language_title"
                         android:textSize="16sp"
-                        android:textColor="@color/theme_text" />
+                        android:textColor="?attr/themeTextPrimary" />
 
                     <TextView
                         android:id="@+id/tvLanguageValue"
@@ -63,66 +63,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/language_english"
                         android:textSize="13sp"
-                        android:textColor="@color/theme_text_secondary"
-                        android:layout_marginTop="2dp" />
-
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_chevron_right"
-                    android:alpha="0.5" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <!-- Контрастность -->
-        <LinearLayout
-            android:id="@+id/cardContrast"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginBottom="12dp"
-            android:orientation="vertical"
-            android:background="@drawable/settings_card"
-            android:clickable="true"
-            android:focusable="true">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:padding="16dp">
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_contrast"
-                    android:layout_marginEnd="16dp" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/contrast_title"
-                        android:textSize="16sp"
-                        android:textColor="@color/theme_text" />
-
-                    <TextView
-                        android:id="@+id/tvContrastValue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/contrast_medium"
-                        android:textSize="13sp"
-                        android:textColor="@color/theme_text_secondary"
+                        android:textColor="?attr/themeTextSecondary"
                         android:layout_marginTop="2dp" />
 
                 </LinearLayout>
@@ -173,7 +114,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/theme_title"
                         android:textSize="16sp"
-                        android:textColor="@color/theme_text" />
+                        android:textColor="?attr/themeTextPrimary" />
 
                     <TextView
                         android:id="@+id/tvThemeValue"
@@ -181,7 +122,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/theme_amoled"
                         android:textSize="13sp"
-                        android:textColor="@color/theme_text_secondary"
+                        android:textColor="?attr/themeTextSecondary"
                         android:layout_marginTop="2dp" />
 
                 </LinearLayout>
@@ -232,14 +173,14 @@
                         android:layout_height="wrap_content"
                         android:text="@string/nav_logs"
                         android:textSize="16sp"
-                        android:textColor="@color/theme_text" />
+                        android:textColor="?attr/themeTextPrimary" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="System events log"
                         android:textSize="13sp"
-                        android:textColor="@color/theme_text_secondary"
+                        android:textColor="?attr/themeTextSecondary"
                         android:layout_marginTop="2dp" />
 
                 </LinearLayout>

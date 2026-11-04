@@ -3,8 +3,6 @@
     
     <!-- Нижняя навигация -->
     <string name="nav_home">Главная</string>
-    <string name="nav_help">Справка</string>
-    <string name="nav_settings">Настройки</string>
     
     <!-- Главная -->
     <string name="brightness_label">Яркость</string>
@@ -12,10 +10,6 @@
     <string name="range_255">1–255</string>
     <string name="range_4095">1–4095</string>
     <string name="range_title">Диапазон яркости</string>
-    
-    <!-- Справка -->
-    <string name="help_title">Справка</string>
-    <string name="help_text">Это приложение исправляет проблему с яркостью на GSI-прошивках для Infinix Hot 20i и подобных устройств.\n\nТребуется root-доступ (Magisk/KernelSU).\n\nСистемный ползунок использует значения 0–255, но контроллер дисплея ожидает 0–4095. Приложение записывает правильное значение напрямую в железо.\n\nGitHub: …\nTelegram: …</string>
     
     <!-- Настройки -->
     <string name="settings_title">Настройки</string>
@@ -28,12 +22,6 @@
     <string name="error">Ошибка</string>
     <string name="no_root_title">Нет root-доступа</string>
     <string name="no_root_message">Для работы приложения требуется root.\nПредоставьте права в Magisk/KernelSU.</string>
-
-    <!-- Контрастность -->
-    <string name="contrast_title">Контрастность</string>
-    <string name="contrast_normal">Обычная</string>
-    <string name="contrast_medium">Средняя</string>
-    <string name="contrast_high">Высокая</string>
 
     <!-- Тема -->
     <string name="theme_title">Тема</string>
