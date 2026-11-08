@@ -2,7 +2,7 @@
     <string name="app_name">Brightness Fix</string>
     
     <!-- Нижняя навигация -->
-    <string name="nav_home">Главная</string>
+    <string name="home">Главная</string>
     
     <!-- Главная -->
     <string name="brightness_label">Яркость</string>
@@ -12,28 +12,44 @@
     <string name="range_title">Диапазон яркости</string>
     
     <!-- Настройки -->
-    <string name="settings_title">Настройки</string>
-    <string name="language_title">Язык</string>
+    <string name="language">Язык</string>
     <string name="language_english">English</string>
     <string name="language_russian">Русский</string>
-    <string name="language_coming_soon">Другие языки будут позже</string>
     <string name="no_root">Нет root</string>
     <string name="root_unavailable">Root недоступен</string>
     <string name="error">Ошибка</string>
     <string name="no_root_title">Нет root-доступа</string>
     <string name="no_root_message">Для работы приложения требуется root.\nПредоставьте права в Magisk/KernelSU.</string>
 
-    <!-- Тема -->
-    <string name="theme_title">Тема</string>
-    <string name="theme_light">Светлая</string>
-    <string name="theme_dark">Тёмная</string>
-    <string name="theme_amoled">AMOLED</string>
-
+    <string name="logs">Логи</string>
     <string name="nav_logs">Логи</string>
     <string name="logs_title">Логи</string>
     <string name="logs_empty">Логов пока нет</string>
     <string name="logs_clear">Очистить</string>
     <string name="logs_cleared">Логи очищены</string>
     <string name="logs_share">Поделиться</string>
+    <string name="no_logs">Нет логов для отправки</string>
+
+    <string name="language_title">Language</string>
+    <string name="language_selected_ru">Выбран язык: Русский</string>
+    <string name="language_selected_en">Selected language: English</string>
+
+    <string name="brightness_title">Яркость</string>
+    <string name="brightness_description">Управление уровнем подсветки дисплея</string>
+
+    <string name="about">О приложении</string>
+    <string name="about_version">Версия %1$s</string>
+    <string name="about_source">Исходный код</string>
+    <string name="about_developers">Разработчики</string>
+    <string name="about_developer_role">Основатель и разработчик</string>
+    <string name="about_forum">Тема на 4PDA</string>
+    <string name="about_telegram">Telegram-канал</string>
+    <string name="about_license">GNU AGPL v3.0</string>
+    <string name="about_telegram_not_configured">Ссылка на Telegram пока не указана</string>
+    <string name="about_link_error">Не удалось открыть ссылку</string>
+    <string name="range_label">Диапазон</string>
+    <string name="range_description">Выберите диапазон управления яркостью</string>
+    <string name="ok">OK</string>
+    <string name="confirm">Подтвердить</string>
 
 </resources>

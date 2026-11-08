@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
-import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.SeekBar
 import android.widget.Switch
@@ -15,8 +14,9 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.topjohnwu.superuser.Shell
-import java.io.BufferedReader
-import java.io.InputStreamReader
+import android.content.SharedPreferences
+import android.widget.ImageButton
+import android.widget.Toast
 
 class HomeFragment : Fragment() {
 
@@ -39,124 +39,157 @@ class HomeFragment : Fragment() {
         applyTheme(view)
 
         val slider = view.findViewById<SeekBar>(R.id.sliderBrightness)
-        val switch = view.findViewById<Switch>(R.id.switchOverride)
+        val lockButton = view.findViewById<ImageButton>(R.id.btnOverride)
         val tvValue = view.findViewById<TextView>(R.id.tvValue)
-        val radioGroup = view.findViewById<RadioGroup>(R.id.radioGroup)
+        val btnRange255 = view.findViewById<Button>(R.id.btnRange255)
+        val btnRange4095 = view.findViewById<Button>(R.id.btnRange4095)
         val dimOverlay = view.findViewById<View>(R.id.dimOverlay)
         val noRootBanner = view.findViewById<LinearLayout>(R.id.noRootBanner)
         val btnDismiss = view.findViewById<Button>(R.id.btnDismiss)
         val prefs = requireActivity()
             .getSharedPreferences("brightness_prefs", 0)
 
-        try {
-            val p = Runtime.getRuntime().exec(arrayOf("su", "-c", "id"))
-            val reader = BufferedReader(InputStreamReader(p.inputStream))
-            val output = reader.readLine()
-            p.waitFor()
+            (requireActivity() as MainActivity).checkRootOnce { rootAvailable ->
 
-            hasRoot = output != null && output.contains("uid=0")
-        } catch (e: Exception) {
-            hasRoot = false
-        }
+                // Проверяем, что View фрагмента всё ещё существует
+                if (!isAdded || this@HomeFragment.view !== view) {
+                    return@checkRootOnce
+                }
+            
+                hasRoot = rootAvailable
+            
+                if (!rootAvailable) {
+                    dimOverlay.visibility = View.VISIBLE
+                    noRootBanner.visibility = View.VISIBLE
 
-        if (!hasRoot) {
-            dimOverlay.visibility = View.VISIBLE
-            noRootBanner.visibility = View.VISIBLE
-
-            slider.isEnabled = false
-            switch.isEnabled = false
-
-            for (i in 0 until radioGroup.childCount) {
-                radioGroup.getChildAt(i).isEnabled = false
-            }
-
-            btnDismiss.setOnClickListener {
-                dimOverlay.visibility = View.GONE
-                noRootBanner.visibility = View.GONE
-            }
-
-            return
-        }
-
-        maxBrightness = prefs.getInt("max_brightness", 4095)
-
-        if (maxBrightness == 255) {
-            view.findViewById<RadioButton>(R.id.radio255).isChecked = true
-        } else {
-            view.findViewById<RadioButton>(R.id.radio4095).isChecked = true
-        }
-
-        val savedPercent = prefs.getFloat("brightness_percent", 100f)
-
-        slider.progress = savedPercent.toInt()
-        tvValue.text = "${savedPercent.toInt()}%"
-
-        slider.setOnSeekBarChangeListener(
-            object : SeekBar.OnSeekBarChangeListener {
-
-                override fun onProgressChanged(
-                    seekBar: SeekBar?,
-                    progress: Int,
-                    fromUser: Boolean
-                ) {
-                    if (fromUser) {
-                        val value = progress.toFloat()
-
-                        prefs.edit()
-                            .putFloat("brightness_percent", value)
-                            .apply()
-
-                        tvValue.text = "${progress}%"
-                        setBrightness(value)
+                    btnRange255.isEnabled = false
+                    btnRange4095.isEnabled = false
+            
+                    slider.isEnabled = false
+                    lockButton.isEnabled = false
+            
+                    btnDismiss.setOnClickListener {
+                        dimOverlay.visibility = View.GONE
+                        noRootBanner.visibility = View.GONE
                     }
+            
+                    return@checkRootOnce
                 }
-
-                override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                }
-
-                override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                }
+            
+                setupBrightnessControls(
+                    slider,
+                    lockButton,
+                    tvValue,
+                    btnRange255,
+                    btnRange4095,
+                    prefs
+                )
             }
-        )
-
-        radioGroup.setOnCheckedChangeListener { _, checkedId ->
-            maxBrightness = if (checkedId == R.id.radio255) {
-                255
-            } else {
-                4095
-            }
-
-            prefs.edit()
-                .putInt("max_brightness", maxBrightness)
-                .apply()
-
-            setBrightness(slider.progress.toFloat())
         }
 
-        switch.isChecked = prefs.getBoolean("override", false)
+        private fun setupBrightnessControls(
+            slider: SeekBar,
+            lockButton: ImageButton,
+            tvValue: TextView,
+            btnRange255: Button,
+            btnRange4095: Button,
+            prefs: SharedPreferences
+        ) {
+            maxBrightness = prefs.getInt("max_brightness", 4095)
 
-        switch.setOnCheckedChangeListener { _, isChecked ->
-            prefs.edit()
-                .putBoolean("override", isChecked)
-                .apply()
+            btnRange255.isSelected = maxBrightness == 255
+            btnRange4095.isSelected = maxBrightness == 4095
 
-            if (isChecked) {
+            val savedPercent = prefs.getFloat("brightness_percent", 100f)
+
+            slider.progress = savedPercent.toInt()
+            tvValue.text = "${savedPercent.toInt()}%"
+
+            slider.setOnSeekBarChangeListener(
+                object : SeekBar.OnSeekBarChangeListener {
+                    override fun onProgressChanged(
+                        seekBar: SeekBar?,
+                        progress: Int,
+                        fromUser: Boolean
+                    ) {
+                        if (fromUser) {
+                            val value = progress.toFloat()
+
+                            prefs.edit()
+                                .putFloat("brightness_percent", value)
+                                .apply()
+
+                            tvValue.text = "${progress}%"
+                            setBrightness(value)
+                        }
+                    }
+
+                    override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+                    override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+                }
+            )
+
+            fun selectRange(value: Int) {
+                maxBrightness = value
+
+                btnRange255.isSelected = value == 255
+                btnRange4095.isSelected = value == 4095
+
+                prefs.edit()
+                    .putInt("max_brightness", value)
+                    .apply()
+
+                setBrightness(slider.progress.toFloat())
+            }
+
+            btnRange255.setOnClickListener {
+                if (maxBrightness != 255) {
+                    selectRange(255)
+                }
+            }
+
+            btnRange4095.setOnClickListener {
+                if (maxBrightness != 4095) {
+                    selectRange(4095)
+                }
+            }
+
+            val isLocked = prefs.getBoolean("override", false)
+
+            lockButton.isSelected = isLocked
+
+            lockButton.setOnClickListener {
+                val newState = !lockButton.isSelected
+
+                lockButton.isSelected = newState
+
+                prefs.edit()
+                    .putBoolean("override", newState)
+                    .apply()
+
+                if (newState) {
+                    startService()
+
+                    Toast.makeText(
+                        requireContext(),
+                        "Яркость зафиксирована",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    stopService()
+                }
+            }
+
+            if (isLocked) {
                 startService()
-            } else {
-                stopService()
             }
         }
-
-        if (switch.isChecked) {
-            startService()
-        }
-    }
 
     private fun applyTheme(view: View) {
         val colors = ThemeManager.getColors(requireContext())
-
+    
         view.setBackgroundColor(colors.background)
-
+    
         fun applyColors(currentView: View) {
             when (currentView) {
                 is TextView -> {
@@ -168,19 +201,15 @@ class HomeFragment : Fragment() {
                         }
                     )
                 }
-
-                is LinearLayout -> {
-                    currentView.setBackgroundColor(colors.background)
-                }
             }
-
+    
             if (currentView is ViewGroup) {
                 for (i in 0 until currentView.childCount) {
                     applyColors(currentView.getChildAt(i))
                 }
             }
         }
-
+    
         applyColors(view)
     }
 

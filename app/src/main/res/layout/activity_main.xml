@@ -3,11 +3,192 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="?android:colorBackground">
-    
+    android:background="@color/dark_background">
+
+    <!-- Header -->
+    <LinearLayout
+    android:id="@+id/headerBar"
+    android:layout_width="match_parent"
+    android:layout_height="68dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="67dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="16dp">
+
+        <FrameLayout
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/header_icon_bg"
+            android:clipToOutline="true">
+
+            <ImageView
+                android:id="@+id/ivAppIcon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@mipmap/ic_launcher"
+                android:scaleType="fitXY"
+                android:contentDescription="@string/app_name" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tvHeaderTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:text="@string/app_name"
+            android:textColor="@color/dark_text"
+            android:textSize="21sp"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/btnLanguage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_language"
+            android:contentDescription="@string/language"
+            android:scaleType="centerInside"
+            android:padding="9dp"
+            android:tint="@color/dark_text" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/dark_divider" />
+
+    </LinearLayout>
+
+    <!-- Fragment content -->
     <FrameLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Bottom navigation -->
+    <LinearLayout
+    android:id="@+id/bottomBar"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:paddingBottom="8dp">
+
+    <!-- Segmented navigation -->
+    <FrameLayout
+    android:id="@+id/navigationGroup"
+    android:layout_width="0dp"
+    android:layout_height="56dp"
+    android:layout_weight="1"
+    android:background="@drawable/navigation_pill"
+    android:padding="5dp">
+
+    <!-- Sliding selection background -->
+    <View
+        android:id="@+id/navSelection"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/nav_item_selected" />
+
+    <!-- Navigation items -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/btnHome"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/ivHomeIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_home"
+                android:contentDescription="@string/home"
+                android:tint="@color/dark_text" />
+
+            <TextView
+                android:id="@+id/tvHomeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home"
+                android:textColor="@color/dark_text"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                android:alpha="0"
+                android:layout_marginStart="4dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnLogs"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/ivLogsIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_logs"
+                android:contentDescription="@string/logs"
+                android:tint="@color/dark_text" />
+
+            <TextView
+                android:id="@+id/tvLogsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/logs"
+                android:textColor="@color/dark_text"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                android:alpha="0"
+                android:layout_marginStart="4dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    </FrameLayout>
+
+    <!-- About button -->
+    <ImageButton
+        android:id="@+id/btnAbout"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/settings_card_logs"
+        android:src="@drawable/ic_help"
+        android:contentDescription="@string/about"
+        android:padding="12dp"
+        android:scaleType="centerInside"
+        android:tint="@color/dark_text" />
+
+    </LinearLayout>
 
 </LinearLayout>
